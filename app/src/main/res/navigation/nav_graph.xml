@@ -6,5 +6,17 @@
     <fragment
         android:id="@+id/login_Register_Fragment"
         android:name="com.example.design_patterns_shop.views.Login_Register_Fragment"
-        android:label="Login_Register_Fragment" />
+        android:label="Login_Register_Fragment" >
+        <action
+            android:id="@+id/action_login_Register_Fragment_to_signed_In_Fragment"
+            app:destination="@id/signed_In_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signed_In_Fragment"
+        android:name="com.example.design_patterns_shop.views.Signed_In_Fragment"
+        android:label="Signed_In_Fragment" >
+        <action
+            android:id="@+id/action_signed_In_Fragment_to_login_Register_Fragment"
+            app:destination="@id/login_Register_Fragment" />
+    </fragment>
 </navigation>

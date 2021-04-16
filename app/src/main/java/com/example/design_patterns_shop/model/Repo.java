@@ -22,6 +22,8 @@ public class Repo {
 
     private MutableLiveData<FirebaseUser> userMutableLiveData;
 
+    private MutableLiveData<Boolean> loggedOutMutableLiveData;
+
     public Repo(Application application){
 
         this.application = application;
@@ -30,35 +32,77 @@ public class Repo {
 
         userMutableLiveData = new MutableLiveData<>();
 
+        loggedOutMutableLiveData = new MutableLiveData<>();
+
+        if(firebaseAuth.getCurrentUser() != null){
+
+            userMutableLiveData.postValue(firebaseAuth.getCurrentUser());
+
+            loggedOutMutableLiveData.postValue(false);
+
+        }
+
     }
 
     public void register(String email, String password){
 
         firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(application.getMainExecutor(), new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                .addOnCompleteListener(application.getMainExecutor(), task -> {
 
-                        if(task.isSuccessful()){
+                    if(task.isSuccessful()){
 
-                            userMutableLiveData.postValue(firebaseAuth.getCurrentUser());
-
-                        }
-
-                        else{
-
-                            Toast.makeText(application, "Registration Failed, Try Again" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
-                        }
+                        userMutableLiveData.postValue(firebaseAuth.getCurrentUser());
 
                     }
+
+                    else{
+
+                        Toast.makeText(application, "Registration Failed, Try Again" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+
                 });
 
 
 
     }
 
+    public void login(String email, String password){
+
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(application.getMainExecutor(), task -> {
+
+                    if(task.isSuccessful()){
+
+                        userMutableLiveData.postValue(firebaseAuth.getCurrentUser());
+
+                    }
+
+                    else{
+
+                        Toast.makeText(application, "Login Failed, Try Again" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+
+                });
+
+
+
+    }
+
+    public void logout(){
+
+        firebaseAuth.signOut();
+
+        loggedOutMutableLiveData.postValue(true);
+
+    }
+
     public MutableLiveData<FirebaseUser> getUserMutableLiveData() {
         return userMutableLiveData;
+    }
+
+    public MutableLiveData<Boolean> getLoggedOutMutableLiveData() {
+        return loggedOutMutableLiveData;
     }
 }

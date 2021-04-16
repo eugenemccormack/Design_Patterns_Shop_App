@@ -9,37 +9,36 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.design_patterns_shop.model.Repo;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Login_Register_View_Model extends AndroidViewModel {
+public class Signed_In_View_Model extends AndroidViewModel {
 
     private Repo repo;
 
     private MutableLiveData<FirebaseUser> userMutableLiveData;
 
+    private MutableLiveData<Boolean> loggedOutMutableLiveData;
 
-    public Login_Register_View_Model(@NonNull Application application) {
+    public Signed_In_View_Model(@NonNull Application application) {
+
         super(application);
 
         repo = new Repo(application);
 
         userMutableLiveData = repo.getUserMutableLiveData();
 
-
-
+        loggedOutMutableLiveData = repo.getLoggedOutMutableLiveData();
     }
 
-    public void register(String email, String password){
+    public void logout(){
 
-        repo.register(email, password);
-
-    }
-
-    public void login(String email, String password){
-
-        repo.login(email, password);
+        repo.logout();
 
     }
 
     public MutableLiveData<FirebaseUser> getUserMutableLiveData() {
         return userMutableLiveData;
+    }
+
+    public MutableLiveData<Boolean> getLoggedOutMutableLiveData() {
+        return loggedOutMutableLiveData;
     }
 }
