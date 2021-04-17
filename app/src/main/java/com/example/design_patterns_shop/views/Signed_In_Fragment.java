@@ -10,14 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.design_patterns_shop.R;
-import com.example.design_patterns_shop.view_model.Login_Register_View_Model;
 import com.example.design_patterns_shop.view_model.Signed_In_View_Model;
-import com.google.firebase.auth.FirebaseUser;
 
 public class Signed_In_Fragment extends Fragment {
 
@@ -32,15 +29,11 @@ public class Signed_In_Fragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         signed_in_view_model = new ViewModelProvider(this).get(Signed_In_View_Model.class);
-        signed_in_view_model.getUserMutableLiveData().observe(this, new Observer<FirebaseUser>() {
-            @Override
-            public void onChanged(FirebaseUser firebaseUser) {
+        signed_in_view_model.getUserMutableLiveData().observe(this, firebaseUser -> {
 
-                if(firebaseUser != null){
+            if(firebaseUser != null){
 
-                   signed_in_user.setText("User " + firebaseUser.getEmail() + " is Logged In");
-
-                }
+               signed_in_user.setText("User " + firebaseUser.getEmail() + " is Logged In");
 
             }
 
@@ -50,7 +43,7 @@ public class Signed_In_Fragment extends Fragment {
 
             if(loggedOut){
 
-                Navigation.findNavController(getView()).navigate(R.id.action_signed_In_Fragment_to_login_Register_Fragment);
+                Navigation.findNavController(getView()).navigate(R.id.action_signed_In_Fragment_to_login_Fragment);
 
             }
 

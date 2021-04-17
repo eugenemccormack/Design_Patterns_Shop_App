@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="views.Login_Register_Fragment">
+    tools:context=".views.Login_Fragment">
 
 
     <TextView
@@ -24,7 +24,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="@+id/email_textView_register"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.652" />
+        app:layout_constraintVertical_bias="0.262" />
 
     <EditText
         android:id="@+id/email_editText_login"
@@ -45,7 +45,68 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/email_textView_register"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.425" />
+        app:layout_constraintVertical_bias="0.396" />
+
+    <!--    <Button
+        android:id="@+id/register_button_login"
+        android:layout_width="140dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="29dp"
+        android:background="@drawable/button_border"
+        android:gravity="center"
+        android:text="Register"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/login_button_login"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/login_button_login"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.911" />-->
+
+    <TextView
+        android:id="@+id/register_button_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not Signed Up?"
+        android:textColor="#0A1482"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/login_button_login"
+        app:layout_constraintStart_toStartOf="@+id/login_button_login"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.915" />
+
+    <Button
+        android:id="@+id/login_button_login"
+        android:layout_width="140dp"
+        android:layout_height="42dp"
+        android:background="@drawable/button_border"
+        android:gravity="center"
+        android:text="Login"
+        android:textColor="#FFFFFF"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/password_editText_login"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toStartOf="@+id/password_textView_register"
+        app:layout_constraintTop_toBottomOf="@+id/password_editText_login"
+        app:layout_constraintVertical_bias="0.427" />
+
+    <TextView
+        android:id="@+id/email_textView_register"
+        android:layout_width="101dp"
+        android:layout_height="36dp"
+        android:gravity="center"
+        android:text="Email"
+        android:textColor="#0A1482"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/email_editText_login"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/email_editText_login"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/password_textView_register"
@@ -61,67 +122,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="@+id/email_textView_register"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.587" />
-
-    <!--    <TextView
-        android:id="@+id/not_signed_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Not Signed Up?"
-        android:textColor="#0A1482"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/login_button_login"
-        app:layout_constraintStart_toStartOf="@+id/login_button_login"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.94" />-->
-
-    <Button
-        android:id="@+id/login_button_login"
-        android:layout_width="140dp"
-        android:layout_height="42dp"
-        android:background="@drawable/button_border"
-        android:gravity="center"
-        android:text="Login"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/password_editText_login"
-        app:layout_constraintStart_toStartOf="@+id/password_textView_register"
-        app:layout_constraintTop_toBottomOf="@+id/password_editText_login"
-        app:layout_constraintVertical_bias="0.43" />
-
-    <Button
-        android:id="@+id/register_button_login"
-        android:layout_width="140dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="29dp"
-        android:background="@drawable/button_border"
-        android:gravity="center"
-        android:text="Register"
-        android:textColor="#FFFFFF"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/login_button_login"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/login_button_login"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.911" />
-
-    <TextView
-        android:id="@+id/email_textView_register"
-        android:layout_width="101dp"
-        android:layout_height="36dp"
-        android:gravity="center"
-        android:text="Email"
-        android:textColor="#0A1482"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/email_editText_login"
-        app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/email_editText_login"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.585" />
 
     <EditText
         android:id="@+id/password_editText_login"

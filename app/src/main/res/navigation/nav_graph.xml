@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
-    app:startDestination="@id/login_Register_Fragment">
+    app:startDestination="@id/login_Fragment">
 
     <fragment
-        android:id="@+id/login_Register_Fragment"
-        android:name="com.example.design_patterns_shop.views.Login_Register_Fragment"
-        android:label="Login_Register_Fragment" >
+        android:id="@+id/login_Fragment"
+        android:name="com.example.design_patterns_shop.views.Login_Fragment"
+        android:label="Login_Fragment">
         <action
-            android:id="@+id/action_login_Register_Fragment_to_signed_In_Fragment"
+            android:id="@+id/action_login_Fragment_to_signed_In_Fragment"
             app:destination="@id/signed_In_Fragment" />
+        <action
+            android:id="@+id/action_login_Fragment_to_register_Fragment"
+            app:destination="@id/register_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/signed_In_Fragment"
         android:name="com.example.design_patterns_shop.views.Signed_In_Fragment"
         android:label="Signed_In_Fragment" >
         <action
-            android:id="@+id/action_signed_In_Fragment_to_login_Register_Fragment"
-            app:destination="@id/login_Register_Fragment" />
+            android:id="@+id/action_signed_In_Fragment_to_login_Fragment"
+            app:destination="@id/login_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/register_Fragment"
+        android:name="com.example.design_patterns_shop.views.Register_Fragment"
+        android:label="Register_Fragment" >
+        <action
+            android:id="@+id/action_register_Fragment_to_login_Fragment"
+            app:destination="@id/login_Fragment" />
+        <action
+            android:id="@+id/action_register_Fragment_to_signed_In_Fragment"
+            app:destination="@id/signed_In_Fragment" />
     </fragment>
 </navigation>
