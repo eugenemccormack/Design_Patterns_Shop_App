@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,14 +27,14 @@ public class Login_Fragment extends Fragment {
     private Button login_button_login;
     private TextView register_button_login;
 
-    private Login_View_Model login_register_view_model;
+    private Login_View_Model login_view_model;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        login_register_view_model = new ViewModelProvider(this).get(Login_View_Model.class);
-        login_register_view_model.getUserMutableLiveData().observe(this, new Observer<FirebaseUser>() {
+        login_view_model = new ViewModelProvider(this).get(Login_View_Model.class);
+        login_view_model.getUserMutableLiveData().observe(this, new Observer<FirebaseUser>() {
             @Override
             public void onChanged(FirebaseUser firebaseUser) {
 
@@ -83,12 +84,29 @@ public class Login_Fragment extends Fragment {
 
         login_button_login.setOnClickListener(v -> {
 
-            String email = email_editText_login.getText().toString();
-            String password = password_editText_login.getText().toString();
+            String email = email_editText_login.getText().toString().trim();
+            String password = password_editText_login.getText().toString().trim();
 
-           if(email.length() > 0 && password.length() > 0 ){
 
-                login_register_view_model.login(email, password);
+            if (email.trim().isEmpty()) {
+
+                email_editText_login.requestFocus();
+                email_editText_login.setError("Email Required");
+
+
+            } else if (password.trim().isEmpty()) {
+
+                password_editText_login.requestFocus();
+                password_editText_login.setError("Password Required");
+
+            }
+
+            else{
+
+
+           //if(email.length() > 0 && password.length() > 0 ){
+
+                login_view_model.login(email, password);
 
           }
 

@@ -75,15 +75,59 @@ public class Register_Fragment extends Fragment {
 
         register_button_register.setOnClickListener(v -> {
 
-            String name = name_editText_register.getText().toString();
-            String email = email_editText_register.getText().toString();
-            String password = password_editText_login.getText().toString();
-            String phone = phone_editText_register.getText().toString();
-            String address1 = address1_editText_register.getText().toString();
-            String address2 = address2_editText_register.getText().toString();
+            String name = name_editText_register.getText().toString().trim();
+            String email = email_editText_register.getText().toString().trim();
+            String password = password_editText_login.getText().toString().trim();
+            String phone = phone_editText_register.getText().toString().trim();
+            String address1 = address1_editText_register.getText().toString().trim();
+            String address2 = address2_editText_register.getText().toString().trim();
+
+            if (name.trim().isEmpty()) {
+
+                name_editText_register.requestFocus();
+                name_editText_register.setError("Name Required");
+
+            } else if (email.trim().isEmpty()) {
+
+                email_editText_register.requestFocus();
+                email_editText_register.setError("Email Required");
+
+            }
+
+             else if (password.trim().isEmpty()) {
+
+                password_editText_login.requestFocus();
+                password_editText_login.setError("Password Required");
+
+        }
+
+            else if (phone.trim().isEmpty()) {
+
+                phone_editText_register.requestFocus();
+                phone_editText_register.setError("Phone Required");
+
+    }
 
 
-            if(email.length() > 0 && password.length() > 5 ){
+            else if (address1.trim().isEmpty()) {
+
+               address1_editText_register.requestFocus();
+               address1_editText_register.setError("Address Required");
+
+            }
+
+            else if (address2.trim().isEmpty()) {
+
+                address2_editText_register.requestFocus();
+                address2_editText_register.setError("Address Required");
+
+            }
+
+
+            else{
+
+
+                //if(email.length() > 0 && password.length() > 5 ){
 
                 register_view_model.register(email, password, name, phone, address1, address2);
 
