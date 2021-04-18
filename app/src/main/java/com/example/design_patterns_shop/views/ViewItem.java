@@ -2,18 +2,24 @@ package com.example.design_patterns_shop.views;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.design_patterns_shop.Adapter.MyAdapter;
 import com.example.design_patterns_shop.R;
+import com.example.design_patterns_shop.model.CartModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ViewItem extends AppCompatActivity {
 
-    public static final String MESSAGE = "Message2";
-    public static final String MESSAGE3 = "Message3";
+    public DatabaseReference db;
+    private FirebaseAuth firebaseAuth;
+
+
+    Button addToCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,27 @@ public class ViewItem extends AppCompatActivity {
         double price = intent.getDoubleExtra(MyAdapter.MESSAGE_KEY4, 0);
         TextView text5 = (TextView) findViewById(R.id.price_textView);
         text5.setText("€"+price);
+
+        addToCart = (Button) findViewById(R.id.add_to_cart_button);
+
+        addToCart.setOnClickListener(v -> {
+
+            firebaseAuth = FirebaseAuth.getInstance();
+
+            FirebaseUser u = firebaseAuth.getCurrentUser();
+
+            String UserID = u.getUid();
+
+            db = FirebaseDatabase.getInstance().getReference();
+
+            CartModel cart = new CartModel(title, manufacturer, category, price);
+
+            db.child("Users").child(UserID).child("Cart").child(title).setValue(cart);
+
+
+        });
+
+
 
 
 /*        final double price = Double.parseDouble(intent.getDoubleExtra(MyAdapter.MESSAGE_KEY4));

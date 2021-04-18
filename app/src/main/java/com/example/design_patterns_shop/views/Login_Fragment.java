@@ -41,7 +41,7 @@ public class Login_Fragment extends Fragment {
 
                     //Toast.makeText(getContext(), "User Successfully Created", Toast.LENGTH_SHORT).show();
 
-                    Navigation.findNavController(getView()).navigate(R.id.action_login_Fragment_to_storeItems_Model);//R.id.action_login_Fragment_to_signed_In_Fragment);
+                    Navigation.findNavController(getView()).navigate(R.id.action_login_Fragment_to_storeItems2);//R.id.action_login_Fragment_to_signed_In_Fragment);
 
                 }
 

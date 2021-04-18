@@ -1,8 +1,6 @@
 package com.example.design_patterns_shop.views;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.design_patterns_shop.R;
-import com.example.design_patterns_shop.view_model.NewItem;
 import com.example.design_patterns_shop.view_model.Signed_In_View_Model;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

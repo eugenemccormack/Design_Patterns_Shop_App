@@ -1,4 +1,4 @@
-package com.example.design_patterns_shop.view_model;
+package com.example.design_patterns_shop.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,7 +32,8 @@ public class NewItem extends AppCompatActivity {
     EditText edPrice;
     Button addButton;
 
-    double price = 0.0;
+     Double price = 0.00;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,8 @@ public class NewItem extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageView);
         edTitle = (EditText) findViewById(R.id.title_item);
         edManufacturer = (EditText) findViewById(R.id.manufacturer_item);
-        edCategory = (EditText) findViewById(R.id.title_item);
-        edPrice = (EditText) findViewById(R.id.title_item);
+        edCategory = (EditText) findViewById(R.id.category_item);
+        edPrice = (EditText) findViewById(R.id.price_item);
 
         addButton = (Button) findViewById(R.id.add_newNote);
 
@@ -56,7 +57,20 @@ public class NewItem extends AppCompatActivity {
                 String title = edTitle.getText().toString();
                 String manufacturer = edManufacturer.getText().toString();
                 String category = edCategory.getText().toString();
-               // price = Double.parseDouble(edPrice.getText().toString());
+                price = Double.parseDouble(edPrice.getText().toString());
+
+                //double c = 2.16;
+                Double d = new Double(price);
+
+                if(price == null){
+
+
+                    edPrice.requestFocus();
+                    edPrice.setError("Price Required");
+
+                    Toast.makeText(NewItem.this, "Please Enter a Price", Toast.LENGTH_SHORT).show();
+
+                }
 
 
 
@@ -90,15 +104,7 @@ public class NewItem extends AppCompatActivity {
 
                 }
 
-/*                else if(price.trim().isEmpty()){
 
-
-                    edPrice.requestFocus();
-                    edPrice.setError("Price Required");
-
-                    Toast.makeText(NewItem.this, "Please Enter a Price", Toast.LENGTH_SHORT).show();
-
-                }*/
 
 
 

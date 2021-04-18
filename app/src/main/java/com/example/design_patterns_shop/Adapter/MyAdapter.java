@@ -1,5 +1,6 @@
 package com.example.design_patterns_shop.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.design_patterns_shop.R;
 import com.example.design_patterns_shop.model.StoreItemsModel;
+import com.example.design_patterns_shop.views.ViewItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
     public static final String MESSAGE_KEY1 = "text";
     public static final String MESSAGE_KEY2 = "position";
+    public static final String MESSAGE_KEY3 = "category";
+    public static final String MESSAGE_KEY4 = "price";
+    public static final String MESSAGE_KEY5 = "stock";
 
     private List<StoreItemsModel> values;
 
@@ -51,10 +56,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             StoreItemsModel name = values.get(position);
 
             // before test with starting new activity, you can try make a Toast to display name and position
-/*            Intent intent = new Intent(view.getContext(), ViewNote.class);
+            Intent intent = new Intent(view.getContext(), ViewItem.class);
             intent.putExtra(MESSAGE_KEY1, name.getTitle());
-            intent.putExtra(MESSAGE_KEY2, name.getDescription());
-            view.getContext().startActivity(intent);*/
+            intent.putExtra(MESSAGE_KEY2, name.getManufacturer());
+            intent.putExtra(MESSAGE_KEY3, name.getCategory());
+            intent.putExtra(MESSAGE_KEY4, name.getPrice());
+            //intent.putExtra(MESSAGE_KEY5, name.getStock());
+            view.getContext().startActivity(intent);
             //start activity from another activity, here we are in MyAdapter class,
             // need to call start from the activity within that view holder}}
         }

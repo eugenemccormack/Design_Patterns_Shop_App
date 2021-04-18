@@ -1,4 +1,4 @@
-package com.example.design_patterns_shop.view_model;
+package com.example.design_patterns_shop.views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.design_patterns_shop.R;
 import com.example.design_patterns_shop.Adapter.MyAdapter;
 import com.example.design_patterns_shop.model.StoreItemsModel;
+import com.example.design_patterns_shop.view_model.Signed_In_View_Model;
+import com.example.design_patterns_shop.views.NewItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -58,6 +59,16 @@ public class StoreItems extends AppCompatActivity {
         setContentView(R.layout.store_fragment);
 
         signed_in_view_model = new ViewModelProvider(this).get(Signed_In_View_Model.class);
+        signed_in_view_model.getUserMutableLiveData().observe(this, firebaseUser -> {
+
+            if(firebaseUser == null){
+
+                Intent intent= new Intent(getApplicationContext(), Login_Fragment.class);
+                startActivity(intent);
+
+            }
+
+        });
 
 /*        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
 
@@ -244,6 +255,11 @@ public class StoreItems extends AppCompatActivity {
     public void logout(MenuItem menuitem) {
 
         signed_in_view_model.logout();
+
+        Intent intent= new Intent(getApplicationContext(), Login_Fragment.class);
+        startActivity(intent);
+
+
 
     }
 
