@@ -1,6 +1,5 @@
 package com.example.design_patterns_shop.views;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +17,6 @@ import androidx.navigation.Navigation;
 
 import com.example.design_patterns_shop.R;
 import com.example.design_patterns_shop.view_model.Login_View_Model;
-import com.example.design_patterns_shop.view_model.StoreItems_Model;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Login_Fragment extends Fragment {

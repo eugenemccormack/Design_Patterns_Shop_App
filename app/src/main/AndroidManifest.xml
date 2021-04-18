@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view_model.StoreItems_Model" />
+        <activity android:name=".view_model.StoreItems" />
         <activity android:name=".view_model.NewItem" />
     </application>
 

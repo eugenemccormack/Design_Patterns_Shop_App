@@ -127,7 +127,7 @@ public class NewItem extends AppCompatActivity {
 
                     Toast.makeText(NewItem.this, "New Item Added", Toast.LENGTH_SHORT).show();
 
-                    Intent intent= new Intent(getApplicationContext(), StoreItems_Model.class);
+                    Intent intent= new Intent(getApplicationContext(), StoreItems.class);
                     startActivity(intent);
                 }
 

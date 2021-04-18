@@ -5,12 +5,16 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,10 +34,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StoreItems_Model extends AppCompatActivity {
+public class StoreItems extends AppCompatActivity {
 
 
     TextView markerText;
+
+    private Signed_In_View_Model signed_in_view_model;
 
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
@@ -50,6 +56,8 @@ public class StoreItems_Model extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store_fragment);
+
+        signed_in_view_model = new ViewModelProvider(this).get(Signed_In_View_Model.class);
 
 /*        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
 
@@ -219,5 +227,32 @@ public class StoreItems_Model extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void viewCart(MenuItem menuitem) {
+
+        signed_in_view_model.logout();
+
+
+    }
+
+    public void checkout(MenuItem menuitem) {
+
+
+    }
+
+    public void logout(MenuItem menuitem) {
+
+        signed_in_view_model.logout();
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_list, menu);
+
+
+        return true;
     }
 }

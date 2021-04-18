@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">Design_Patterns_Shop</string>
+    <string name="app_name">Design Patterns Shop</string>
+    <string name="checkout">Checkout</string>
+    <string name="view_cart">View Cart</string>
+    <string name="logout">Log Out</string>
 </resources>

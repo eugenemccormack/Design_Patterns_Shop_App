@@ -41,6 +41,6 @@
     </fragment>
     <activity
         android:id="@+id/storeItems_Model"
-        android:name="com.example.design_patterns_shop.view_model.StoreItems_Model"
+        android:name="com.example.design_patterns_shop.view_model.StoreItems"
         android:label="StoreItems_Model" />
 </navigation>
