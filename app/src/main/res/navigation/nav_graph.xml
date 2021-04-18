@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_login_Fragment_to_register_Fragment"
             app:destination="@id/register_Fragment" />
+        <action
+            android:id="@+id/action_login_Fragment_to_storeItems_Model"
+            app:destination="@id/storeItems_Model" />
     </fragment>
     <fragment
         android:id="@+id/signed_In_Fragment"
@@ -21,6 +24,9 @@
         <action
             android:id="@+id/action_signed_In_Fragment_to_login_Fragment"
             app:destination="@id/login_Fragment" />
+        <action
+            android:id="@+id/action_signed_In_Fragment_to_storeItems_Model"
+            app:destination="@id/storeItems_Model" />
     </fragment>
     <fragment
         android:id="@+id/register_Fragment"
@@ -33,4 +39,8 @@
             android:id="@+id/action_register_Fragment_to_signed_In_Fragment"
             app:destination="@id/signed_In_Fragment" />
     </fragment>
+    <activity
+        android:id="@+id/storeItems_Model"
+        android:name="com.example.design_patterns_shop.view_model.StoreItems_Model"
+        android:label="StoreItems_Model" />
 </navigation>

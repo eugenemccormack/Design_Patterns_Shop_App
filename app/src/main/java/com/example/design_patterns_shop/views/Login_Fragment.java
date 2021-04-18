@@ -1,5 +1,6 @@
 package com.example.design_patterns_shop.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import androidx.navigation.Navigation;
 
 import com.example.design_patterns_shop.R;
 import com.example.design_patterns_shop.view_model.Login_View_Model;
+import com.example.design_patterns_shop.view_model.StoreItems_Model;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Login_Fragment extends Fragment {
@@ -42,7 +44,7 @@ public class Login_Fragment extends Fragment {
 
                     //Toast.makeText(getContext(), "User Successfully Created", Toast.LENGTH_SHORT).show();
 
-                    Navigation.findNavController(getView()).navigate(R.id.action_login_Fragment_to_signed_In_Fragment);
+                    Navigation.findNavController(getView()).navigate(R.id.action_login_Fragment_to_storeItems_Model);//R.id.action_login_Fragment_to_signed_In_Fragment);
 
                 }
 
@@ -66,19 +68,6 @@ public class Login_Fragment extends Fragment {
 
 
             Navigation.findNavController(getView()).navigate(R.id.action_login_Fragment_to_register_Fragment);
-
-         //   Navigation.findNavController(getView()).navigate(R.id.action_register_Fragment_to_login_Register_Fragment);
-
-      /*      String email = email_editText_login.getText().toString();
-            String password = password_editText_login.getText().toString();
-
-            if(email.length() > 0 && password.length() > 5 ){
-
-                login_register_view_model.register(email, password);
-
-            }*/
-
-
 
         });
 
