@@ -13,17 +13,15 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.design_patterns_shop.R;
 import com.example.design_patterns_shop.Adapter.MyAdapter;
+import com.example.design_patterns_shop.R;
 import com.example.design_patterns_shop.model.StoreItemsModel;
 import com.example.design_patterns_shop.view_model.Signed_In_View_Model;
-import com.example.design_patterns_shop.views.NewItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,7 +34,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StoreItems extends AppCompatActivity {
+public class CartView extends AppCompatActivity {
+
 
 
     TextView markerText;
@@ -70,42 +69,6 @@ public class StoreItems extends AppCompatActivity {
             }
 
         });
-
-/*        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav);
-
-        bottomNavigationView.setSelectedItemId(R.id.notes);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId()){
-
-                    case R.id.notes:
-
-                        return true;
-
-                    case R.id.mapSelect:
-
-                        startActivity(new Intent(getApplicationContext(), Maps.class));
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    *//*case R.id.weather:
-
-                        startActivity(new Intent(getApplicationContext(), Weather.class));
-                        overridePendingTransition(0,0);
-                        return true;*//*
-
-                    case R.id.details:
-
-                        startActivity(new Intent(getApplicationContext(), Update.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                }
-                return false;
-            }
-        });*/
 
         EditText edittext = findViewById(R.id.edittext);
         edittext.addTextChangedListener(new TextWatcher() {
@@ -210,7 +173,7 @@ public class StoreItems extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
         String userID = mUser.getUid();
 
-        DatabaseReference fireDBUser= FirebaseDatabase.getInstance().getReference("Items");//.child(userID).child("Note");//.child("title");;
+        DatabaseReference fireDBUser= FirebaseDatabase.getInstance().getReference("Users").child(userID).child("Cart");//.child("title");;
 
         fireDBUser.addValueEventListener(new ValueEventListener() {
 
@@ -243,7 +206,7 @@ public class StoreItems extends AppCompatActivity {
 
     public void viewCart(MenuItem menuitem) {
 
-        Intent intent= new Intent(getApplicationContext(), CartView.class);
+        Intent intent= new Intent(getApplicationContext(), Login_Fragment.class);
         startActivity(intent);
 
         //signed_in_view_model.logout();
@@ -253,8 +216,6 @@ public class StoreItems extends AppCompatActivity {
 
     public void checkout(MenuItem menuitem) {
 
-        Intent intent= new Intent(getApplicationContext(), CartView.class);
-        startActivity(intent);
 
     }
 

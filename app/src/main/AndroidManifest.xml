@@ -20,6 +20,7 @@
         <activity android:name=".views.StoreItems" />
         <activity android:name=".views.NewItem" />
         <activity android:name=".views.ViewItem" />
+        <activity android:name=".views.CartView" />
 
     </application>
 
